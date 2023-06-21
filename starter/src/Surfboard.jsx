@@ -11,7 +11,7 @@ export default function Surfboard(props) {
   const surfboard = useRef()
 
   useFrame(() => {
-    surfboard.current.rotation.y += 0.001
+    surfboard.current.rotation.y += 0.002
   })
 
   // color editor using leva
