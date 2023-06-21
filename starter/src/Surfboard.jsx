@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { useControls } from 'leva'
 
 export default function Surfboard(props) {
   const { nodes, materials } = useGLTF("./model/surfboart-uno.glb");
@@ -13,8 +14,23 @@ export default function Surfboard(props) {
     surfboard.current.rotation.y += 0.001
   })
 
+  // color editor using leva
+  const { position, sideColor } = useControls({
+    position: {
+      value: {x: 0, y: .3},
+      min: -3,
+      max: 3,
+      step: 0.1,
+      joystick: 'invertY'
+    },
+    sideColor: {
+      value: "#B79D68",
+      label: "Color",
+    }
+  })
+
   return (
-    <group ref={surfboard} castShadow {...props} dispose={null}>
+    <group position={[position.x, position.y, 0]} ref={surfboard} castShadow {...props} dispose={null}>
       <mesh
         castShadow
         // receiveShadow
@@ -32,6 +48,7 @@ export default function Surfboard(props) {
         // receiveShadow
         geometry={nodes.Plane.geometry}
         material={materials["side-material"]}
+        material-color={sideColor}
       />
     </group>
   );
