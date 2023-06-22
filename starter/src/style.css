@@ -11,3 +11,22 @@ body,
     background: #8491A3;
     background: #0D1B2A;
 }
+
+/* Fonts to use */
+/* font-family: 'Clash Display', sans-serif;
+font-family: 'Satoshi', sans-serif;
+font-family: 'Ranade', sans-serif;
+font-family: 'Chillax', sans-serif;
+font-family: 'Cabinet Grotesk', sans-serif;
+font-family: 'Melodrama', serif; */
+
+.title-container {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+}
+.title-container .title-container-title {
+  font-size: 26px;
+  color: #1B263B;
+  font-family: 'Melodrama', serif;
+}
