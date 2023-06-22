@@ -15,7 +15,7 @@ export default function Surfboard(props) {
   })
 
   // color editor using leva
-  const { position, sideColor } = useControls({
+  const { position, sideColor, baseColor } = useControls({
     position: {
       value: {x: 0, y: .3},
       min: -3,
@@ -26,6 +26,10 @@ export default function Surfboard(props) {
     sideColor: {
       value: "#B79D68",
       label: "Color",
+    },
+    baseColor: {
+      value: '#E5E5E5',
+      label: "Base Color",
     }
   })
 
@@ -36,6 +40,7 @@ export default function Surfboard(props) {
         // receiveShadow
         geometry={nodes.Plane001.geometry}
         material={materials["Material.001"]}
+        material-color={baseColor}
       />
       <mesh
         castShadow
