@@ -3,19 +3,23 @@ import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from 'leva'
+import { Vector3 } from "three";
+import * as THREE from 'three'
 
 export default function Surfboard(props) {
   const { nodes, materials } = useGLTF("./model/surfboart-uno.glb");
 
-  // rotate the surfboard slowly
+  const p = new THREE.Vector3(0, 0, 0)
+  const q = new THREE.Quaternion(0, 0, 0, 0)
+
   const surfboard = useRef()
 
   useFrame(() => {
     surfboard.current.rotation.y += 0.002
   })
 
-  // color editor using leva
-  const { position, sideColor, baseColor } = useControls({
+  // Leva Live Editor
+  const { position, sideColor, baseColor, rotation } = useControls({
     position: {
       value: {x: 0, y: .3},
       min: -3,
@@ -30,11 +34,19 @@ export default function Surfboard(props) {
     baseColor: {
       value: '#E5E5E5',
       label: "Base Color",
+    },
+    rotation: {
+      value: {x: 0, y: 0, z: 0},
+      min: -3,
+      max: 3,
+      step: 0.1,
+      joystick: 'invertY'
     }
   })
+  console.log(rotation)
 
   return (
-    <group position={[position.x, position.y, 0]} ref={surfboard} castShadow {...props} dispose={null}>
+    <group rotation={[rotation.x, rotation.y, rotation.z]} position={[position.x, position.y, 0]} ref={surfboard} castShadow {...props} dispose={null}>
       <mesh
         castShadow
         // receiveShadow
