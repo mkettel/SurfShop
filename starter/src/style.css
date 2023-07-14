@@ -30,3 +30,14 @@ font-family: 'Melodrama', serif; */
   color: #1B263B;
   font-family: 'Melodrama', serif;
 }
+
+.watermark {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+}
+.watermark .watermark-letter {
+  font-size: 18px;
+  color: #1B263B;
+  font-family: 'Melodrama', serif;
+}

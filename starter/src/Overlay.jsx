@@ -9,5 +9,9 @@ export default function Overlay() {
       <h1 className='title-container-title'>Surfshop</h1>
     </div>
 
+    <div className="watermark">
+      <p className='watermark-letter'>2023</p>
+    </div>
+
   </>
 }
