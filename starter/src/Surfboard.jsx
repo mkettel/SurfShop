@@ -20,7 +20,7 @@ export default function Surfboard(props) {
   const { position, sideColor, baseColor } = useControls({
     position: {
       value: {x: 0, y: .3},
-      min: -3,
+      min: .2,
       max: 3,
       step: 0.1,
       joystick: 'invertY'
