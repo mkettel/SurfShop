@@ -13,7 +13,7 @@ export default function Surfboard(props) {
 
 
   useFrame(() => {
-    surfboard.current.rotation.y += 0.0025
+    surfboard.current.rotation.y += 0.0026
   })
 
   // Leva Live Editor
@@ -32,8 +32,7 @@ export default function Surfboard(props) {
     baseColor: {
       value: '#E5E5E5',
       label: "Base Color",
-    },
-
+    }
   })
 
 
