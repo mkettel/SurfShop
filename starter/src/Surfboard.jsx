@@ -13,7 +13,7 @@ export default function Surfboard(props) {
 
 
   useFrame(() => {
-    surfboard.current.rotation.y += 0.0026
+    surfboard.current.rotation.y += 0.0028
   })
 
   // Leva Live Editor
