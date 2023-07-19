@@ -45,6 +45,7 @@ export default function Surfboard(props) {
       ref={surfboard}
       castShadow {...props}
       dispose={null}>
+
       <mesh
         castShadow
         // receiveShadow
