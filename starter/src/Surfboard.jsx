@@ -9,7 +9,10 @@ import { useRoute, useLocation } from 'wouter'
 export default function Surfboard(props) {
   const { nodes, materials } = useGLTF("../model/surfboart-uno.glb");
 
-  const surfboard = useRef()
+  const surfboard = useRef();
+  const [, setLocation] = useLocation()
+  const [, params] = useRoute('/item/:id')
+
 
 
   useFrame(() => {
@@ -64,4 +67,20 @@ export default function Surfboard(props) {
       />
     </group>
   );
+}
+
+// Temporary Rig Function to add in
+function Rig({ position = new THREE.Vector3(0, 0, 2), focus = new THREE.Vector3(0, 0, 0) }) {
+  const { controls, scene } = useThree()
+  const [, params] = useRoute('/item/:id')
+  useEffect(() => {
+    const active = scene.getObjectByName(params?.id)
+    if (active) {
+      console.log(active.parent.localToWorld)
+      active.parent.localToWorld(position.set(0, 0.5, 0.25))
+      active.parent.localToWorld(focus.set(0, 0, -2))
+    }
+    controls?.setLookAt(...position.toArray(), ...focus.toArray(), true)
+  })
+  return <CameraControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 2} />
 }
