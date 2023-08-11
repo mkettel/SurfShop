@@ -10,10 +10,13 @@ import { easing } from 'maath'
 export default function Surfboard(props) {
   const { nodes, materials } = useGLTF("../model/surfboart-uno.glb");
 
+  // refs
   const surfboard = useRef();
   const controlsRef = useRef();
   const cameraRef = useRef();
 
+  const topBoard = useRef();
+  const [topSelected, setTopSelected] = useState(false)
 
   const topSheet = () => {
     const newPosition = [2, 2, 7]
@@ -21,8 +24,10 @@ export default function Surfboard(props) {
 
     // sets the camera position and target and duration of lerping (sick as fuck)
     controlsRef.current.setLookAt(...newPosition, ...newTarget, 1)
-    console.log('controlsRef.current', controlsRef.current);
-    console.log('cameraRef.current', cameraRef.current);
+    // console.log('controlsRef.current', controlsRef.current);
+    // console.log('cameraRef.current', cameraRef.current);
+    // console.log(surfboard.current.rotation);
+    setTopSelected(true)
   }
 
 
@@ -46,7 +51,8 @@ export default function Surfboard(props) {
   })
 
   useFrame(() => {
-    surfboard.current.rotation.y += 0.0028
+    // surfboard.current.rotation.y += 0.0028
+    surfboard.current.rotation.x = topSelected ? THREE.MathUtils.lerp(surfboard.current.rotation.x, 2, .02) : THREE.MathUtils.lerp(surfboard.current.rotation.x, 0, 1);
   })
 
   const startTargetVector = new THREE.Vector3(0, 3, 0)
@@ -60,14 +66,15 @@ export default function Surfboard(props) {
         ref={surfboard}
         castShadow {...props}
         dispose={null}
-        onClick={topSheet}
         >
         <mesh
+          ref={topBoard}
           castShadow
           // receiveShadow
           geometry={nodes.Plane001.geometry}
           material={materials["Material.001"]}
           material-color={baseColor}
+          onClick={topSheet}
         />
         <mesh
           castShadow
@@ -83,6 +90,19 @@ export default function Surfboard(props) {
           material-color={sideColor}
         />
       </group>
+      <Rig />
     </>
   );
+}
+
+
+function Rig() {
+
+  const vec = new THREE.Vector3();
+
+  return useFrame(({ camera, mouse }) => {
+    vec.set(mouse.x * 2, mouse.y * 2, camera.position.z)
+    camera.position.lerp(vec, 0.025)
+    camera.lookAt(0, 0, 0)
+  })
 }
