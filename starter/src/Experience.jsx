@@ -11,13 +11,13 @@ import { useThree } from '@react-three/fiber';
 
 export default function Experience()
 {
-  const [, params] = useRoute('/item/:id')
-  const [, setLocation] = useLocation()
 
   const cameraPosition = useRef([1, 3, 10])
   const cameraTarget = useRef([0, 0, 0])
   const camera = useRef()
   const fov = useRef(45)
+
+  console.log('cameraPosition', cameraPosition);
 
     return <>
 

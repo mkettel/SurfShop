@@ -13,9 +13,9 @@ export default function Surfboard(props) {
   const surfboard = useRef();
   const [, setLocation] = useLocation()
 
-  useFrame(() => {
-    surfboard.current.rotation.y += 0.0028
-  })
+  console.log('props', props);
+  console.log(props.cameraPosition.current);
+
 
   // Leva Live Editor
   const { position, sideColor, baseColor } = useControls({
@@ -34,6 +34,10 @@ export default function Surfboard(props) {
       value: '#E5E5E5',
       label: "Base Color",
     }
+  })
+
+  useFrame(() => {
+    surfboard.current.rotation.y += 0.0028
   })
 
 
