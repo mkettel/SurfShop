@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
-import { MeshTransmissionMaterial, useGLTF, CameraControls } from "@react-three/drei";
+import { MeshTransmissionMaterial, useGLTF, CameraControls, PerspectiveCamera } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useControls } from 'leva'
 import * as THREE from 'three'
@@ -11,10 +11,19 @@ export default function Surfboard(props) {
   const { nodes, materials } = useGLTF("../model/surfboart-uno.glb");
 
   const surfboard = useRef();
-  const [, setLocation] = useLocation()
+  const controlsRef = useRef();
+  const cameraRef = useRef();
 
-  console.log('props', props);
-  console.log(props.cameraPosition.current);
+
+  const topSheet = () => {
+    const newPosition = [2, 2, 7]
+    const newTarget = [0, 0, 0]
+
+    // sets the camera position and target and duration of lerping (sick as fuck)
+    controlsRef.current.setLookAt(...newPosition, ...newTarget, 1)
+    console.log('controlsRef.current', controlsRef.current);
+    console.log('cameraRef.current', cameraRef.current);
+  }
 
 
   // Leva Live Editor
@@ -40,34 +49,40 @@ export default function Surfboard(props) {
     surfboard.current.rotation.y += 0.0028
   })
 
+  const startTargetVector = new THREE.Vector3(0, 3, 0)
 
   return (
-    <group
-      position={[position.x, position.y, 0]}
-      ref={surfboard}
-      castShadow {...props}
-      dispose={null}
-      >
-      <mesh
-        castShadow
-        // receiveShadow
-        geometry={nodes.Plane001.geometry}
-        material={materials["Material.001"]}
-        material-color={baseColor}
-      />
-      <mesh
-        castShadow
-        // receiveShadow
-        geometry={nodes.Plane002.geometry}
-        material={materials.bottom}
-      />
-      <mesh
-        castShadow
-        // receiveShadow
-        geometry={nodes.Plane.geometry}
-        material={materials["side-material"]}
-        material-color={sideColor}
-      />
-    </group>
+    <>
+      <PerspectiveCamera ref={cameraRef} makeDefault position={[2, 4, 10]} focus={startTargetVector} fov={45} />
+      <CameraControls ref={controlsRef} camera={cameraRef.current} />
+      <group
+        position={[position.x, position.y, 0]}
+        ref={surfboard}
+        castShadow {...props}
+        dispose={null}
+        onClick={topSheet}
+        >
+        <mesh
+          castShadow
+          // receiveShadow
+          geometry={nodes.Plane001.geometry}
+          material={materials["Material.001"]}
+          material-color={baseColor}
+        />
+        <mesh
+          castShadow
+          // receiveShadow
+          geometry={nodes.Plane002.geometry}
+          material={materials.bottom}
+        />
+        <mesh
+          castShadow
+          // receiveShadow
+          geometry={nodes.Plane.geometry}
+          material={materials["side-material"]}
+          material-color={sideColor}
+        />
+      </group>
+    </>
   );
 }

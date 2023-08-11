@@ -17,11 +17,9 @@ export default function Experience()
   const camera = useRef()
   const fov = useRef(45)
 
-  console.log('cameraPosition', cameraPosition);
 
     return <>
 
-        <PerspectiveCamera ref={camera} makeDefault position={cameraPosition.current} fov={fov.current} />
 
         <OrbitControls makeDefault />
 
