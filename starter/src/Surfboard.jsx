@@ -45,7 +45,8 @@ export default function Surfboard(props) {
     const oldCameraPosition = [2, 5, 9]
     const newCameraPosition = [2, 5, 10]
     const originTarget = [0, 0, 0]
-    const newTarget = [0, 2, 0]
+    const newTarget = [0, 2.8, 0]
+    // controls the camera position and target
     if (!topSelected) {
       controlsRef.current.setLookAt(...newCameraPosition, ...newTarget, 5)
     } else {
