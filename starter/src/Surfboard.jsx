@@ -41,6 +41,7 @@ export default function Surfboard(props) {
   const topBoard = useRef();
   const [topSelected, setTopSelected] = useState(false)
 
+  // Camera Movement for Top Sheet
   const topSheet = () => {
     const oldCameraPosition = [2, 5, 9]
     const newCameraPosition = [2, 5, 10]
@@ -48,7 +49,7 @@ export default function Surfboard(props) {
     const newTarget = [0, 2.8, 0]
     // controls the camera position and target
     if (!topSelected) {
-      controlsRef.current.setLookAt(...newCameraPosition, ...newTarget, 5)
+      controlsRef.current.setLookAt(...newCameraPosition, ...newTarget, .1)
     } else {
       controlsRef.current.setLookAt(...oldCameraPosition, ...originTarget, 1)
     }
