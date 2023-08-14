@@ -12,7 +12,7 @@ export default function Surfboard(props) {
   const { nodes, materials } = useGLTF("../model/surfboart-uno.glb");
 
   // Leva Live Editor
-  const { sideColor, baseColor } = useControls({
+  const { sideColor, baseColor, bottomColor } = useControls({
     sideColor: {
       value: "#B79D68",
       label: "Side Color",
@@ -20,7 +20,11 @@ export default function Surfboard(props) {
     baseColor: {
       value: '#E5E5E5',
       label: "Base Color",
-    }
+    },
+    bottomColor: {
+      value: '#E5E5E5',
+      label: "Bottom Color",
+    },
   })
 
   // camera acess
@@ -95,6 +99,7 @@ export default function Surfboard(props) {
           // receiveShadow
           geometry={nodes.Plane002.geometry}
           material={materials.bottom}
+          material-color={bottomColor}
         />
         <mesh
           castShadow
