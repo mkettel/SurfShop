@@ -77,7 +77,7 @@ export default function Surfboard(props) {
 
   return (
     <>
-      <CameraControls ref={controlsRef} minPolarAngle={.3} maxPolarAngle={Math.PI / 2.3} minAzimuthAngle={-.7} maxAzimuthAngle={1}   />
+      <CameraControls ref={controlsRef} minPolarAngle={.3} maxPolarAngle={Math.PI / 2.3} minAzimuthAngle={-.7} maxAzimuthAngle={1} minDistance={3} maxDistance={11}  />
       <group
         ref={surfboard}
         castShadow {...props}
