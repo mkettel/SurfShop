@@ -67,3 +67,10 @@ font-family: 'Melodrama', serif; */
   transform: rotate3d(1, 0, 0, 180deg);
   color: #2b436f;
 }
+
+@media (max-width: 768px) {
+  .flip-button {
+    top: -90px;
+    left: 105px;
+  }
+}
