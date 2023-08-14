@@ -70,7 +70,7 @@ font-family: 'Melodrama', serif; */
 
 @media (max-width: 768px) {
   .flip-button {
-    top: -90px;
+    top: -80px;
     left: 105px;
   }
 }
