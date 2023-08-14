@@ -34,8 +34,6 @@ export default function Experience()
 
     return <>
 
-        <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} enableZoom={false} enablePan={false} />
-
         <directionalLight castShadow intensity={ 1 } position={[2, 6, 0]} shadow-mapSize={ [2224, 1224] }  />
 
         <ambientLight intensity={ 0.3 } />
@@ -47,5 +45,7 @@ export default function Experience()
         <Floor />
 
         <Sky sunPosition={ [ 100, 10, 150 ] } />
+
+        {/* <OrbitControls minPolarAngle={0.5} maxPolarAngle={Math.PI / 2.3} enableZoom={false} enablePan={false} /> */}
     </>
 }
