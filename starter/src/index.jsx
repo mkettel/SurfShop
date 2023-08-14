@@ -16,6 +16,6 @@ root.render(
         <Experience />
     </Canvas>
     <Overlay />
-    <Leva collapsed />
+    <Leva />
   </>
 )
