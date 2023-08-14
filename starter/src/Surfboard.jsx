@@ -69,9 +69,9 @@ export default function Surfboard(props) {
 
   // Changing position of the surfboard
   useFrame(( camera ) => {
-    surfboard.current.rotation.x = topSelected ? THREE.MathUtils.lerp(surfboard.current.rotation.x, 1.2, .02) : THREE.MathUtils.lerp(surfboard.current.rotation.x, 0, .02);
-    surfboard.current.position.y = topSelected ? THREE.MathUtils.lerp(surfboard.current.position.y, 3.3, .02) : THREE.MathUtils.lerp(surfboard.current.position.y, 0.4, .02);
-    surfboard.current.rotation.z = flipBoardState ? THREE.MathUtils.lerp(surfboard.current.rotation.z, 3.2, .02) : THREE.MathUtils.lerp(surfboard.current.rotation.z, 0, .02);
+    surfboard.current.rotation.x = topSelected ? THREE.MathUtils.lerp(surfboard.current.rotation.x, 1.2, .05) : THREE.MathUtils.lerp(surfboard.current.rotation.x, 0, .05);
+    surfboard.current.position.y = topSelected ? THREE.MathUtils.lerp(surfboard.current.position.y, 3.3, .05) : THREE.MathUtils.lerp(surfboard.current.position.y, 0.4, .05);
+    surfboard.current.rotation.z = flipBoardState ? THREE.MathUtils.lerp(surfboard.current.rotation.z, 3.2, .05) : THREE.MathUtils.lerp(surfboard.current.rotation.z, 0, .05);
   })
 
 
