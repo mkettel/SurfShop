@@ -19,7 +19,7 @@ export default function Experience()
       function handleResize() {
         const { innerWidth } = window;
         const isMobile = innerWidth <= 768; // Adjust the breakpoint for mobile devices
-        const scale = isMobile ? .5 : 1; // Adjust the scale values for mobile
+        const scale = isMobile ? .7 : 1; // Adjust the scale values for mobile
         setSurfScale(scale);
       }
       window.addEventListener('resize', handleResize);
