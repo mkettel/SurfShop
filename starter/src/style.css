@@ -27,7 +27,7 @@ font-family: 'Melodrama', serif; */
   left: 30px;
 }
 .title-container .title-container-title {
-  font-size: 26px;
+  font-size: 36px;
   color: #1B263B;
   font-family: 'Melodrama', serif;
   cursor: pointer;
@@ -69,6 +69,17 @@ font-family: 'Melodrama', serif; */
 }
 
 @media (max-width: 768px) {
+  .title-container {
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+  }
+  .title-container .title-container-title {
+    font-size: 32px;
+    position: absolute;
+    bottom: -20px;
+    left: -10px;
+  }
   .flip-button {
     top: -80px;
     left: 105px;
