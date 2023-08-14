@@ -10,6 +10,7 @@ body,
     background: ivory;
     background: #8491A3;
     background: #0D1B2A;
+    font-family: 'Melodrama', serif;
 }
 
 /* Fonts to use */
@@ -29,6 +30,7 @@ font-family: 'Melodrama', serif; */
   font-size: 26px;
   color: #1B263B;
   font-family: 'Melodrama', serif;
+  cursor: pointer;
 }
 
 .watermark {
@@ -40,4 +42,28 @@ font-family: 'Melodrama', serif; */
   font-size: 18px;
   color: #1B263B;
   font-family: 'Melodrama', serif;
+}
+
+/* Flip Button */
+.flip-button {
+  opacity: 1;
+  background-color: transparent;
+  padding: 10px;
+  border: none;
+  position: absolute;
+  top: -200px;
+  left: 325px;
+  z-index: 1000;
+  cursor: pointer;
+  font-size: 24px;
+  font-family: 'Melodrama', serif;
+  text-transform: uppercase;
+  transition: all 0.9s ease-in-out;
+  transform: translateX(0px);
+  color: #1B263B;
+
+}
+.flip-button:hover {
+  transform: rotate3d(1, 0, 0, 180deg);
+  color: #2b436f;
 }

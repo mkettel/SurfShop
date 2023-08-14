@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
-import { MeshTransmissionMaterial, useGLTF, CameraControls, PerspectiveCamera } from "@react-three/drei";
+import { MeshTransmissionMaterial, useGLTF, CameraControls, PerspectiveCamera, Html } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useControls } from 'leva'
 import * as THREE from 'three'
@@ -25,7 +25,7 @@ export default function Surfboard(props) {
 
   // camera acess
   const { camera } = useThree()
-  camera.focus = 100;
+  camera.focus = 100; // set the focus distance
 
   // Hover State for Cursor
   const [hovered, setHovered] = useState(false)
@@ -33,9 +33,9 @@ export default function Surfboard(props) {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'
   }, [hovered])
 
-  // refs for various objects
-  const surfboard = useRef();
-  const controlsRef = useRef();
+
+  const surfboard = useRef(); // access to the surfboard
+  const controlsRef = useRef(); // access to the camera controls
 
   // access to the top board
   const topBoard = useRef();
@@ -56,9 +56,18 @@ export default function Surfboard(props) {
     setTopSelected(!topSelected)
   }
 
+  // flipBoardState
+  const [flipBoardState, setFlipBoardState] = useState(false)
+  const flipBoard = () => {
+    setFlipBoardState(!flipBoardState)
+  }
+
+
+  // Changing position of the surfboard
   useFrame(( camera ) => {
     surfboard.current.rotation.x = topSelected ? THREE.MathUtils.lerp(surfboard.current.rotation.x, 1.2, .02) : THREE.MathUtils.lerp(surfboard.current.rotation.x, 0, .02);
     surfboard.current.position.y = topSelected ? THREE.MathUtils.lerp(surfboard.current.position.y, 3.3, .02) : THREE.MathUtils.lerp(surfboard.current.position.y, 0.4, .02);
+    surfboard.current.rotation.z = flipBoardState ? THREE.MathUtils.lerp(surfboard.current.rotation.z, 3.2, .02) : THREE.MathUtils.lerp(surfboard.current.rotation.z, 0, .02);
   })
 
 
@@ -96,6 +105,7 @@ export default function Surfboard(props) {
         />
       </group>
       {/* <Rig /> */}
+      <FlipButton flipBoard={flipBoard} flipBoardState={flipBoardState} setFlipBoardState={setFlipBoardState} topSelected={topSelected} setTopSelected={setTopSelected} />
     </>
   );
 }
@@ -111,3 +121,20 @@ export default function Surfboard(props) {
 //     camera.lookAt(0, 0, 0)
 //   })
 // }
+
+function FlipButton(props) {
+
+  if (props.topSelected) {
+    return <>
+      <Html>
+        <button className="flip-button" onClick={props.flipBoard}>flip</button>
+      </Html>
+    </>
+  } else {
+    return <>
+      <Html>
+        <button className="flip-button" style={{opacity: 0, transform: 'translateY(-300px)'}}>flip</button>
+      </Html>
+    </>
+  }
+}
