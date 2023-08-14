@@ -19,7 +19,7 @@ export default function Experience()
       function handleResize() {
         const { innerWidth } = window;
         const isMobile = innerWidth <= 768; // Adjust the breakpoint for mobile devices
-        const scale = isMobile ? .7 : 1; // Adjust the scale values for mobile
+        const scale = isMobile ? .65 : 1; // Adjust the scale values for mobile
         setSurfScale(scale);
       }
       window.addEventListener('resize', handleResize);
@@ -34,7 +34,7 @@ export default function Experience()
 
     return <>
 
-        <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
+        <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} enableZoom={false} enablePan={false} />
 
         <directionalLight castShadow intensity={ 1 } position={[2, 6, 0]} shadow-mapSize={ [2224, 1224] }  />
 
