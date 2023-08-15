@@ -1,13 +1,7 @@
-import { OrbitControls, Sky, MeshReflectorMaterial, SoftShadows, CameraControls, PerspectiveCamera, PresentationControls } from '@react-three/drei'
+import { Sky, SoftShadows } from '@react-three/drei'
 import React, { useRef, useState, useEffect } from "react";
 import Surfboard from './Surfboard'
-import { MeshBasicMaterial } from 'three';
 import Floor from './Floor'
-import { useRoute, useLocation } from 'wouter';
-import * as THREE from 'three'
-import { useThree } from '@react-three/fiber';
-import { Leva } from 'leva'
-
 
 
 export default function Experience()
@@ -46,6 +40,5 @@ export default function Experience()
 
         <Sky sunPosition={ [ 100, 10, 150 ] } />
 
-        {/* <OrbitControls minPolarAngle={0.5} maxPolarAngle={Math.PI / 2.3} enableZoom={false} enablePan={false} /> */}
     </>
 }

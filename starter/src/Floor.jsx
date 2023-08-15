@@ -1,4 +1,4 @@
-import { OrbitControls, Sky, MeshReflectorMaterial, SoftShadows, Text3D, Html, Hud } from '@react-three/drei'
+import { MeshReflectorMaterial } from '@react-three/drei'
 
 
 export default function Floor() {
