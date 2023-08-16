@@ -17,7 +17,7 @@ export default function Experience()
         const { innerWidth } = window;
         const isMobile = innerWidth <= 768; // Adjust the breakpoint for mobile devices
         const scale = isMobile ? .60 : 1; // Adjust the scale values for mobile
-        const butterScale = isMobile ? .65 : 1.2; // Adjust the scale values for mobile
+        const butterScale = isMobile ? .7 : 1.2; // Adjust the scale values for mobile
         setSurfScale(scale);
         setButterScale(butterScale);
       }
@@ -33,7 +33,7 @@ export default function Experience()
     // Leva Surfboard Change
     const { selectedBoard } = useControls({
       selectedBoard: {
-        value: 'Chupacabra',
+        value: 'Butterstick',
         label: 'Choose Surfboard',
         options: ['Chupacabra', 'Butterstick']
       }
@@ -47,8 +47,8 @@ export default function Experience()
 
         <SoftShadows frustum={ 1.25 } size={ 15 } near={ 10.5 } samples={ 17 } rings={11 } />
 
-        {selectedBoard === 'Chupacabra' && <Surfboard scale={surfScale} FlipButton={FlipButton} receiveShadow castShadow rotation={ [ 0, 1, 0]} />}
-        {selectedBoard === 'Butterstick' && <Butterstick scale={butterScale} FlipButton={FlipButton} receiveShadow castShadow rotation={ [ 0, 4, 0]} />}
+        {selectedBoard === 'Chupacabra' && <Surfboard scale={surfScale} FlipButton={FlipButton} receiveShadow castShadow rotation={ [ 0, 1, 0]} position={[0, 0, 0]} />}
+        {selectedBoard === 'Butterstick' && <Butterstick scale={butterScale} FlipButton={FlipButton} receiveShadow castShadow rotation={ [ 0, 4, 0]} position={[0, 0, 0]} />}
 
         <Floor />
 

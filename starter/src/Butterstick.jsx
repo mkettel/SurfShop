@@ -70,7 +70,7 @@ export function Butterstick(props) {
   // Changing position of the surfboard
   useFrame(( camera ) => {
     butterstick.current.rotation.x = topSelected ? THREE.MathUtils.lerp(butterstick.current.rotation.x, 1.2, .05) : THREE.MathUtils.lerp(butterstick.current.rotation.x, 0, .05);
-    butterstick.current.position.y = topSelected ? THREE.MathUtils.lerp(butterstick.current.position.y, 3.3, .05) : THREE.MathUtils.lerp(butterstick.current.position.y, 0.4, .05);
+    butterstick.current.position.y = topSelected ? THREE.MathUtils.lerp(butterstick.current.position.y, 3.3, .05) : THREE.MathUtils.lerp(butterstick.current.position.y, 0.1, .05);
     butterstick.current.position.z = topSelected ? THREE.MathUtils.lerp(butterstick.current.position.z, .7, .05) : THREE.MathUtils.lerp(butterstick.current.position.z, 0, .05);
     butterstick.current.rotation.z = flipBoardState ? THREE.MathUtils.lerp(butterstick.current.rotation.z, 2.9, .05) : THREE.MathUtils.lerp(butterstick.current.rotation.z, 0, .05);
     butterstick.current.position.z = flipBoardState ? THREE.MathUtils.lerp(butterstick.current.position.z, 1.6, .05) : THREE.MathUtils.lerp(butterstick.current.position.z, 0, .05);
