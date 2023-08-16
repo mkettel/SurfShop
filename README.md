@@ -10,6 +10,9 @@ Surfshop got started with a local Santa Monica Surfboard builder. Because he mak
 | Three.js    | CSS              |
 | R3F         | HTML             |
 
+## Link
+[SurfShop](https://surf-shop-zeta.vercel.app/)
+
 ## Connect
 If you are curious about this project and are interested in learning more or contributing, please reach out via email or LinkedIn. I am always actively seeking collaboration and feedback.  
 - mattkettelkamp@gmail.com
