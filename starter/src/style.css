@@ -68,6 +68,17 @@ font-family: 'Melodrama', serif; */
   color: #2b436f;
 }
 
+.inst {
+  position: absolute;
+  bottom: 0px;
+  left: 430px;
+  font-size: 18px;
+  color: #1B263B;
+  font-family: 'Melodrama', serif;
+  width: 300px;
+  transition: .3s;
+}
+
 @media (max-width: 768px) {
   .title-container {
     position: absolute;

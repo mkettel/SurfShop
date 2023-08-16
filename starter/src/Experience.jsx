@@ -1,4 +1,4 @@
-import { Sky, SoftShadows } from '@react-three/drei'
+import { Sky, SoftShadows, Html } from '@react-three/drei'
 import React, { useRef, useState, useEffect } from "react";
 import Surfboard from './Surfboard'
 import Floor from './Floor'
@@ -17,7 +17,7 @@ export default function Experience()
         const { innerWidth } = window;
         const isMobile = innerWidth <= 768; // Adjust the breakpoint for mobile devices
         const scale = isMobile ? .60 : 1; // Adjust the scale values for mobile
-        const butterScale = isMobile ? .60 : 1.2; // Adjust the scale values for mobile
+        const butterScale = isMobile ? .65 : 1.2; // Adjust the scale values for mobile
         setSurfScale(scale);
         setButterScale(butterScale);
       }
@@ -47,12 +47,31 @@ export default function Experience()
 
         <SoftShadows frustum={ 1.25 } size={ 15 } near={ 10.5 } samples={ 17 } rings={11 } />
 
-        {selectedBoard === 'Chupacabra' && <Surfboard scale={surfScale} receiveShadow castShadow rotation={ [ 0, 1, 0]} />}
-        {selectedBoard === 'Butterstick' && <Butterstick scale={butterScale} receiveShadow castShadow rotation={ [ 0, 4, 0]} />}
+        {selectedBoard === 'Chupacabra' && <Surfboard scale={surfScale} FlipButton={FlipButton} receiveShadow castShadow rotation={ [ 0, 1, 0]} />}
+        {selectedBoard === 'Butterstick' && <Butterstick scale={butterScale} FlipButton={FlipButton} receiveShadow castShadow rotation={ [ 0, 4, 0]} />}
 
         <Floor />
 
         <Sky sunPosition={ [ 100, 10, 150 ] } />
 
     </>
+}
+
+function FlipButton(props) {
+
+  if (props.topSelected) {
+    return <>
+      <Html>
+        <button className="flip-button" onClick={props.flipBoard}>flip</button>
+        <p className="inst" style={{opacity: 0}}>tap board to stand</p>
+      </Html>
+    </>
+  } else {
+    return <>
+      <Html>
+        <button className="flip-button" style={{opacity: 0, transform: 'translateY(-300px)'}}>flip</button>
+        <p className="inst" >tap board to stand</p>
+      </Html>
+    </>
+  }
 }

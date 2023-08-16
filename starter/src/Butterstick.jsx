@@ -1,13 +1,13 @@
-
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, CameraControls } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useControls } from 'leva'
+import * as THREE from 'three'
+
 
 
 export function Butterstick(props) {
   const { nodes, materials } = useGLTF("../model/butter-stick.glb");
-
-
 
   // Leva Live Editor
   const { sidesColor, topColor, bottomsColor } = useControls({
@@ -37,10 +37,53 @@ export function Butterstick(props) {
   const butterstick = useRef(); // access to the surfboard
   const controlsRef = useRef(); // access to the camera controls
 
+  const [hovered, setHovered] = useState(false)
+  useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto'
+  }, [hovered])
+
+  // access to the top board
+  const topBoard = useRef();
+  const [topSelected, setTopSelected] = useState(false)
+
+  // Camera Movement for Top Sheet
+  const topSheet = () => {
+    const oldCameraPosition = [2, 5, 9]
+    const newCameraPosition = [2, 5, 10]
+    const originTarget = [0, 0, 0]
+    const newTarget = [0, 2.8, 0]
+    // controls the camera position and target
+    if (!topSelected) {
+      controlsRef.current.setLookAt(...newCameraPosition, ...newTarget, .1)
+    } else {
+      controlsRef.current.setLookAt(...oldCameraPosition, ...originTarget, 1)
+    }
+    setTopSelected(!topSelected)
+  }
+
+  // flipBoardState
+  const [flipBoardState, setFlipBoardState] = useState(false)
+  const flipBoard = () => {
+    setFlipBoardState(!flipBoardState)
+  }
+
+  // Changing position of the surfboard
+  useFrame(( camera ) => {
+    butterstick.current.rotation.x = topSelected ? THREE.MathUtils.lerp(butterstick.current.rotation.x, 1.2, .05) : THREE.MathUtils.lerp(butterstick.current.rotation.x, 0, .05);
+    butterstick.current.position.y = topSelected ? THREE.MathUtils.lerp(butterstick.current.position.y, 3.3, .05) : THREE.MathUtils.lerp(butterstick.current.position.y, 0.4, .05);
+    butterstick.current.position.z = topSelected ? THREE.MathUtils.lerp(butterstick.current.position.z, .7, .05) : THREE.MathUtils.lerp(butterstick.current.position.z, 0, .05);
+    butterstick.current.rotation.z = flipBoardState ? THREE.MathUtils.lerp(butterstick.current.rotation.z, 2.9, .05) : THREE.MathUtils.lerp(butterstick.current.rotation.z, 0, .05);
+    butterstick.current.position.z = flipBoardState ? THREE.MathUtils.lerp(butterstick.current.position.z, 1.6, .05) : THREE.MathUtils.lerp(butterstick.current.position.z, 0, .05);
+  })
+
   return (
     <>
     <CameraControls ref={controlsRef} minPolarAngle={.3} maxPolarAngle={Math.PI / 2.3} minAzimuthAngle={-.7} maxAzimuthAngle={1} minDistance={3} maxDistance={11}  />
-    <group {...props} dispose={null} ref={butterstick}>
+    <group
+    {...props}
+    dispose={null}
+    ref={butterstick}
+    >
       <mesh
         castShadow
         // receiveShadow
@@ -58,6 +101,9 @@ export function Butterstick(props) {
         material={topMaterial}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
+        onClick={topSheet}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
         />
       <mesh
         castShadow
@@ -240,6 +286,7 @@ export function Butterstick(props) {
         scale={0.31}
         />
     </group>
+    <props.FlipButton flipBoard={flipBoard} flipBoardState={flipBoardState} setFlipBoardState={setFlipBoardState} topSelected={topSelected} setTopSelected={setTopSelected} />
   </>
   );
 }

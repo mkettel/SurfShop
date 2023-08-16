@@ -108,7 +108,7 @@ export default function Surfboard(props) {
         />
       </group>
       {/* <Rig /> */}
-      <FlipButton flipBoard={flipBoard} flipBoardState={flipBoardState} setFlipBoardState={setFlipBoardState} topSelected={topSelected} setTopSelected={setTopSelected} />
+      <props.FlipButton flipBoard={flipBoard} flipBoardState={flipBoardState} setFlipBoardState={setFlipBoardState} topSelected={topSelected} setTopSelected={setTopSelected} />
     </>
   );
 }
@@ -124,20 +124,3 @@ export default function Surfboard(props) {
 //     camera.lookAt(0, 0, 0)
 //   })
 // }
-
-function FlipButton(props) {
-
-  if (props.topSelected) {
-    return <>
-      <Html>
-        <button className="flip-button" onClick={props.flipBoard}>flip</button>
-      </Html>
-    </>
-  } else {
-    return <>
-      <Html>
-        <button className="flip-button" style={{opacity: 0, transform: 'translateY(-300px)'}}>flip</button>
-      </Html>
-    </>
-  }
-}
