@@ -1,15 +1,45 @@
 
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useControls } from 'leva'
+
 
 export function Butterstick(props) {
   const { nodes, materials } = useGLTF("../model/butter-stick.glb");
+
+
+
+  // Leva Live Editor
+  const { sidesColor, topColor, bottomsColor } = useControls({
+    sidesColor: {
+      value: "#E965A1",
+      label: "Side Color",
+    },
+    topColor: {
+      value: "#c780b7",
+      label: "Base Color",
+    },
+    bottomsColor: {
+      value: '#c780b7',
+      label: "Bottom Base Color",
+    },
+  });
+
+  // cloning material to make a new one
+  const topMaterial = materials.rough.clone();
+  topMaterial.color.set(topColor);
+
+  const bottomMaterial = materials.rough.clone();
+  bottomMaterial.color.set(bottomsColor);
+  // #EBB4D5
+
   return (
     <group {...props} dispose={null}>
       <mesh
         castShadow
         // receiveShadow
         geometry={nodes.surfboard.geometry}
+        material-color={sidesColor}
         material={materials.glossy}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
@@ -18,7 +48,8 @@ export function Butterstick(props) {
         castShadow
         // receiveShadow
         geometry={nodes.surftop.geometry}
-        material={materials.rough}
+        material-color={topColor}
+        material={topMaterial}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
       />
@@ -26,7 +57,8 @@ export function Butterstick(props) {
         castShadow
         // receiveShadow
         geometry={nodes.surfbottom.geometry}
-        material={materials.rough}
+        material={bottomMaterial}
+        material-color={bottomsColor}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
       />
