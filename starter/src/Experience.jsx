@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Surfboard from './Surfboard'
 import Floor from './Floor'
 import { Butterstick } from './Butterstick';
+import { useControls } from 'leva';
 
 
 export default function Experience()
@@ -28,6 +29,14 @@ export default function Experience()
     }, []);
     // --------------------------------------------------------------------------
 
+    // Leva Surfboard Change
+    const { selectedBoard } = useControls({
+      selectedBoard: {
+        value: 'Chupacabra',
+        label: 'Choose Surfboard',
+        options: ['Chupacabra', 'Butterstick']
+      }
+    });
 
     return <>
 
@@ -37,9 +46,8 @@ export default function Experience()
 
         <SoftShadows frustum={ 1.25 } size={ 15 } near={ 10.5 } samples={ 17 } rings={11 } />
 
-        <Surfboard scale={surfScale} receiveShadow castShadow rotation={ [ 0, 1, 0]} />
-
-        <Butterstick scale={butterScale} receiveShadow castShadow rotation={ [ 0, 4, 0]} position={[-4, 0, 2]} />
+        {selectedBoard === 'Chupacabra' && <Surfboard scale={surfScale} receiveShadow castShadow rotation={ [ 0, 1, 0]} />}
+        {selectedBoard === 'Butterstick' && <Butterstick scale={butterScale} receiveShadow castShadow rotation={ [ 0, 1, 0]} />}
 
         <Floor />
 
