@@ -19,6 +19,7 @@ export default function Experience()
         const scale = isMobile ? .60 : 1; // Adjust the scale values for mobile
         const butterScale = isMobile ? .60 : 1.2; // Adjust the scale values for mobile
         setSurfScale(scale);
+        setButterScale(butterScale);
       }
       window.addEventListener('resize', handleResize);
     handleResize(); // Call the function initially
