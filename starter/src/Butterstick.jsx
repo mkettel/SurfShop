@@ -69,6 +69,7 @@ export function Butterstick(props) {
 
   // Changing position of the surfboard
   useFrame(( camera ) => {
+    // add if top selected AND flipped y value through conditionals
     butterstick.current.rotation.x = topSelected ? THREE.MathUtils.lerp(butterstick.current.rotation.x, 1.2, .05) : THREE.MathUtils.lerp(butterstick.current.rotation.x, 0, .05);
     butterstick.current.position.y = topSelected ? THREE.MathUtils.lerp(butterstick.current.position.y, 3.3, .05) : THREE.MathUtils.lerp(butterstick.current.position.y, 0.1, .05);
     butterstick.current.position.z = topSelected ? THREE.MathUtils.lerp(butterstick.current.position.z, .7, .05) : THREE.MathUtils.lerp(butterstick.current.position.z, 0, .05);
