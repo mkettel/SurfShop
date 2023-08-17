@@ -108,7 +108,7 @@ export default function Surfboard(props) {
         />
       </group>
       {/* <Rig /> */}
-      <props.FlipButton flipBoard={flipBoard} flipBoardState={flipBoardState} setFlipBoardState={setFlipBoardState} topSelected={topSelected} setTopSelected={setTopSelected} />
+      <props.FlipButton topSheet={topSheet} flipBoard={flipBoard} flipBoardState={flipBoardState} setFlipBoardState={setFlipBoardState} topSelected={topSelected} setTopSelected={setTopSelected} />
     </>
   );
 }

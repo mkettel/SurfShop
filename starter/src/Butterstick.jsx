@@ -287,7 +287,7 @@ export function Butterstick(props) {
         scale={0.31}
         />
     </group>
-    <props.FlipButton flipBoard={flipBoard} flipBoardState={flipBoardState} setFlipBoardState={setFlipBoardState} topSelected={topSelected} setTopSelected={setTopSelected} />
+    <props.FlipButton topSheet={topSheet} flipBoard={flipBoard} flipBoardState={flipBoardState} setFlipBoardState={setFlipBoardState} topSelected={topSelected} setTopSelected={setTopSelected} />
   </>
   );
 }

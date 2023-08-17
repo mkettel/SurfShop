@@ -72,11 +72,17 @@ font-family: 'Melodrama', serif; */
   position: absolute;
   bottom: 0px;
   left: 430px;
-  font-size: 18px;
+  font-size: 24px;
   color: #1B263B;
   font-family: 'Melodrama', serif;
   width: 300px;
-  transition: .3s;
+  transition: .9s;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.inst:hover {
+  color: #2b436f;
+  transition: .9s;
 }
 
 @media (max-width: 768px) {
@@ -92,7 +98,11 @@ font-family: 'Melodrama', serif; */
     left: -10px;
   }
   .flip-button {
-    top: -80px;
+    top: -60px;
     left: 105px;
+  }
+  .inst {
+    bottom: -270px;
+    left: -80px;
   }
 }

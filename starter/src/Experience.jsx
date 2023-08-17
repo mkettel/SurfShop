@@ -63,14 +63,14 @@ function FlipButton(props) {
     return <>
       <Html>
         <button className="flip-button" onClick={props.flipBoard}>flip</button>
-        <p className="inst" style={{opacity: 0}}>tap board to stand</p>
+        <p className="inst" style={{opacity: 0, transform: 'translateY(400px)'}}>tap board to stand</p>
       </Html>
     </>
   } else {
     return <>
       <Html>
-        <button className="flip-button" style={{opacity: 0, transform: 'translateY(-300px)'}}>flip</button>
-        <p className="inst" >tap board to stand</p>
+        <button className="flip-button" style={{opacity: 0, transform: 'translateY(-400px)'}}>flip</button>
+        <p className="inst" onClick={props.topSheet} >tap board to stand</p>
       </Html>
     </>
   }
