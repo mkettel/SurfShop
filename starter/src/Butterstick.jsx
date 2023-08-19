@@ -10,7 +10,7 @@ export function Butterstick(props) {
   const { nodes, materials } = useGLTF("../model/butter-stick.glb");
 
   // Leva Live Editor
-  const { sidesColor, topColor, bottomsColor } = useControls({
+  const { sidesColor, topColor, bottomsColor, stripeColor } = useControls({
     sidesColor: {
       value: "#E965A1",
       label: "Side Color",
@@ -23,6 +23,10 @@ export function Butterstick(props) {
       value: '#c780b7',
       label: "Bottom Base Color",
     },
+    stripeColor: {
+      value: '#000000',
+      label: "Stripe Color"
+    }
   });
 
   // cloning material to make a new one
@@ -138,6 +142,7 @@ export function Butterstick(props) {
         // receiveShadow
         geometry={nodes["topstripe-body"].geometry}
         material={materials.Material}
+        // material-color={stripeColor}
         position={[0.028, 0.682, -0.006]}
         rotation={[-Math.PI, 0, -Math.PI]}
         scale={[0.016, 1, 3.522]}
