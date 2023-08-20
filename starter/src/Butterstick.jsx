@@ -5,7 +5,6 @@ import { useControls } from 'leva'
 import * as THREE from 'three'
 
 
-
 export function Butterstick(props) {
   const { nodes, materials } = useGLTF("../model/butter-stick.glb");
 
@@ -35,7 +34,6 @@ export function Butterstick(props) {
 
   const bottomMaterial = materials.rough.clone();
   bottomMaterial.color.set(bottomsColor);
-  // #EBB4D5
 
   // Refs
   const butterstick = useRef(); // access to the surfboard
