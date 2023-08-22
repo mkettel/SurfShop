@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, CameraControls } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useControls } from 'leva'
 import * as THREE from 'three'
 
@@ -93,7 +93,6 @@ export function Butterstick(props) {
     >
       <mesh
         castShadow
-        // receiveShadow
         geometry={nodes.surfboard.geometry}
         material-color={sidesColor}
         material={materials.glossy}
@@ -102,7 +101,6 @@ export function Butterstick(props) {
         />
       <mesh
         castShadow
-        // receiveShadow
         geometry={nodes.surftop.geometry}
         material-color={topColor}
         material={topMaterial}
@@ -114,7 +112,6 @@ export function Butterstick(props) {
         />
       <mesh
         castShadow
-        // receiveShadow
         geometry={nodes.surfbottom.geometry}
         material={bottomMaterial}
         material-color={bottomsColor}
