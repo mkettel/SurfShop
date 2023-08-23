@@ -1,5 +1,5 @@
 import { Sky, SoftShadows, Html } from '@react-three/drei'
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Surfboard from './Surfboard'
 import Floor from './Floor'
 import { Butterstick } from './Butterstick';
