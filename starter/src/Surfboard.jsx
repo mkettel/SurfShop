@@ -115,6 +115,7 @@ export default function Surfboard(props) {
 
 // this function follows the mouse around the screen a bit
 // it's a little buggy, but it's a nice effect to have and save it to use later
+// commenting to get a commit since i am coding but it doesn't show up on github
 // function Rig() {
 
 //   const vec = new THREE.Vector3();
