@@ -113,7 +113,6 @@ export default function Surfboard(props) {
   );
 }
 
-// it's a little buggy, but it's a nice effect to have and save it to use later
 // commenting to get a commit since i am coding but it doesn't show up on github
 // function Rig() {
 
