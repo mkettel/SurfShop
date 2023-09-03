@@ -1,7 +1,8 @@
-import { Sky, SoftShadows, Html } from '@react-three/drei'
+import { Sky, SoftShadows, Html, Environment } from '@react-three/drei'
 import React, { useState, useEffect } from "react";
 import Surfboard from './Surfboard'
 import Floor from './Floor'
+import Ocean from './Floor'
 import { Butterstick } from './Butterstick';
 import { useControls } from 'leva';
 
@@ -50,9 +51,11 @@ export default function Experience()
         {selectedBoard === 'Chupacabra' && <Surfboard scale={surfScale} FlipButton={FlipButton} receiveShadow castShadow rotation={ [ 0, 1, 0]} position={[0, 0, 0]} />}
         {selectedBoard === 'Butterstick' && <Butterstick scale={butterScale} FlipButton={FlipButton} receiveShadow castShadow rotation={ [ 0, 4, 0]} position={[0, 0, 0]} />}
 
-        <Floor />
+        {/* <Floor /> */}
+        <Ocean position={[0, 1, 0]} />
+        <Environment background files="../background/syferfontein_1d_clear_puresky_4k.hdr" />
 
-        <Sky sunPosition={ [ 100, 10, 150 ] } />
+        {/* <Sky sunPosition={ [ 100, 10, 150 ] } /> */}
 
     </>
 }
