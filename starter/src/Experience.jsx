@@ -53,7 +53,7 @@ export default function Experience()
 
         {/* <Floor /> */}
         <Ocean position={[0, 1, 0]}  />
-        <Environment background files="../background/bs-1.hdr" />
+        <Environment background files="../background/s_sunset_1.hdr" />
 
         {/* <Sky sunPosition={ [ 100, 10, 150 ] } /> */}
 
