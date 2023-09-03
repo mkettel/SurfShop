@@ -23,11 +23,11 @@ font-family: 'Melodrama', serif; */
 
 .title-container {
   position: absolute;
-  top: 10px;
+  top: 0px;
   left: 30px;
 }
 .title-container .title-container-title {
-  font-size: 36px;
+  font-size: 46px;
   color: #1B263B;
   font-family: 'Melodrama', serif;
   cursor: pointer;

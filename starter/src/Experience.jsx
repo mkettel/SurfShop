@@ -44,7 +44,7 @@ export default function Experience()
 
         <directionalLight castShadow intensity={ 1 } position={[2, 6, 0]} shadow-mapSize={ [1024, 1024] } shadow-camera-far={10} shadow-camera-near={0} shadow-camera-left={-5} />
 
-        <ambientLight intensity={ 0.3 } />
+        <ambientLight intensity={ 0.1 } />
 
         <SoftShadows frustum={ 1.25 } size={ 15 } near={ 10.5 } samples={ 17 } rings={11 } />
 
@@ -52,8 +52,8 @@ export default function Experience()
         {selectedBoard === 'Butterstick' && <Butterstick scale={butterScale} FlipButton={FlipButton} receiveShadow castShadow rotation={ [ 0, 4, 0]} position={[0, 0, 0]} />}
 
         {/* <Floor /> */}
-        <Ocean position={[0, 1, 0]} />
-        <Environment background files="../background/syferfontein_1d_clear_puresky_4k.hdr" />
+        <Ocean position={[0, 1, 0]}  />
+        <Environment background files="../background/bs-1.hdr" />
 
         {/* <Sky sunPosition={ [ 100, 10, 150 ] } /> */}
 

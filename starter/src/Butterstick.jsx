@@ -112,6 +112,7 @@ export function Butterstick(props) {
         material={materials.glossy}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
+        material-envMapIntensity={0.5}
         />
       <mesh
         castShadow
@@ -123,6 +124,7 @@ export function Butterstick(props) {
         onClick={topSheet}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
+        material-envMapIntensity={0.4}
         />
       <mesh
         castShadow
@@ -131,6 +133,7 @@ export function Butterstick(props) {
         material-color={bottomsColor}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
+        material-envMapIntensity={0.5}
         />
       <mesh
         castShadow
@@ -141,6 +144,8 @@ export function Butterstick(props) {
         position={[0.653, 0.077, -2.872]}
         rotation={[-3.084, 0, -Math.PI]}
         scale={[0.142, 0.366, 0.441]}
+        material-envMapIntensity={0.5}
+
         />
       <mesh
         castShadow
@@ -150,6 +155,7 @@ export function Butterstick(props) {
         position={[-0.477, 0.077, -2.872]}
         rotation={[-3.084, 0, -Math.PI]}
         scale={[0.142, 0.366, 0.441]}
+        material-envMapIntensity={0.5}
         />
       <mesh
         castShadow
@@ -160,6 +166,7 @@ export function Butterstick(props) {
         position={[0.028, 0.682, -0.006]}
         rotation={[-Math.PI, 0, -Math.PI]}
         scale={[0.016, 1, 3.522]}
+        material-envMapIntensity={0.5}
         />
       <mesh
         castShadow
@@ -169,6 +176,8 @@ export function Butterstick(props) {
         position={[0.028, 0.362, -0.006]}
         rotation={[-Math.PI, 0, -Math.PI]}
         scale={[0.016, 1, 3.522]}
+        material-envMapIntensity={0.5}
+
       />
       <mesh
         castShadow

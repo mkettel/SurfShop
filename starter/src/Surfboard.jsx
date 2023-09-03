@@ -99,6 +99,8 @@ export default function Surfboard(props) {
           onClick={topSheet}
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
+          material-envMapIntensity={0.4}
+
         />
         <mesh
           castShadow
@@ -106,6 +108,8 @@ export default function Surfboard(props) {
           geometry={nodes.Plane002.geometry}
           material={materials.bottom}
           material-color={bottomColor}
+          material-envMapIntensity={0.4}
+
         />
         <mesh
           castShadow
@@ -113,6 +117,8 @@ export default function Surfboard(props) {
           geometry={nodes.Plane.geometry}
           material={materials["side-material"]}
           material-color={sideColor}
+          material-envMapIntensity={0.4}
+
         />
       </group>
       {/* <Rig /> */}
