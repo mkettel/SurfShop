@@ -58,19 +58,33 @@ export function Butterstick(props) {
     const newCameraPosition = [2, 5, 10]
     const originTarget = [0, 0, 0]
     const newTarget = [0, 2.8, 0]
-    // controls the camera position and target
-    if (!topSelected) {
-      controlsRef.current.setLookAt(...newCameraPosition, ...newTarget, .1)
-    } else {
-      controlsRef.current.setLookAt(...oldCameraPosition, ...originTarget, 1)
+
+    // if the board is selected and it is flipped, then flip it back
+    if (topSelected && flipBoardState) {
+      setFlipBoardState(false);
     }
-    setTopSelected(!topSelected)
+    if (!topSelected) {
+      controlsRef.current.setLookAt(...newCameraPosition, ...newTarget, .1);
+    } else {
+      controlsRef.current.setLookAt(...oldCameraPosition, ...originTarget, 1);
+    }
+    setTopSelected(!topSelected);
+
+    // controls the camera position and target
+    // if (!topSelected) {
+    //   controlsRef.current.setLookAt(...newCameraPosition, ...newTarget, .1)
+    // } else {
+    //   controlsRef.current.setLookAt(...oldCameraPosition, ...originTarget, 1)
+    // }
+    // setTopSelected(!topSelected)
   }
 
   // flipBoardState
   const [flipBoardState, setFlipBoardState] = useState(false)
   const flipBoard = () => {
-    setFlipBoardState(!flipBoardState)
+    if (topSelected) {
+      setFlipBoardState(!flipBoardState)
+    }
   }
 
   // Changing position of the surfboard
