@@ -1,4 +1,4 @@
-import { Sky, SoftShadows, Html, Environment } from '@react-three/drei'
+import { SoftShadows, Html, Environment } from '@react-three/drei'
 import React, { useState, useEffect, Suspense } from "react";
 import Surfboard from './Surfboard'
 import Floor from './Floor'
@@ -53,13 +53,10 @@ export default function Experience()
         {selectedBoard === 'Butterstick' && <Butterstick scale={butterScale} FlipButton={FlipButton} receiveShadow castShadow rotation={ [ 0, 4, 0]} position={[0, 0, 0]} />}
 
         {/* <Floor /> */}
-        <Suspense fallback={<Placeholder />}>
+        <Suspense fallback={ <Placeholder /> }>
           <Ocean  />
           <Environment background files="../background/s_sunset_1.hdr" />
         </Suspense>
-
-        {/* <Sky sunPosition={ [ 100, 10, 150 ] } /> */}
-
     </>
 }
 

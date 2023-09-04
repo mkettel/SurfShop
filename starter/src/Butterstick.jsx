@@ -69,14 +69,6 @@ export function Butterstick(props) {
       controlsRef.current.setLookAt(...oldCameraPosition, ...originTarget, 1);
     }
     setTopSelected(!topSelected);
-
-    // controls the camera position and target
-    // if (!topSelected) {
-    //   controlsRef.current.setLookAt(...newCameraPosition, ...newTarget, .1)
-    // } else {
-    //   controlsRef.current.setLookAt(...oldCameraPosition, ...originTarget, 1)
-    // }
-    // setTopSelected(!topSelected)
   }
 
   // flipBoardState
@@ -133,7 +125,7 @@ export function Butterstick(props) {
         material-color={bottomsColor}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
-        material-envMapIntensity={0.5}
+        material-envMapIntensity={0.4}
         />
       <mesh
         castShadow
@@ -144,7 +136,7 @@ export function Butterstick(props) {
         position={[0.653, 0.077, -2.872]}
         rotation={[-3.084, 0, -Math.PI]}
         scale={[0.142, 0.366, 0.441]}
-        material-envMapIntensity={0.5}
+        material-envMapIntensity={0.4}
 
         />
       <mesh
@@ -155,7 +147,7 @@ export function Butterstick(props) {
         position={[-0.477, 0.077, -2.872]}
         rotation={[-3.084, 0, -Math.PI]}
         scale={[0.142, 0.366, 0.441]}
-        material-envMapIntensity={0.5}
+        material-envMapIntensity={0.4}
         />
       <mesh
         castShadow
