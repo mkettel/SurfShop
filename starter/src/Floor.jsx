@@ -32,8 +32,7 @@ export default function Ocean() {
   return <water ref={ref} args={[geom, config]} rotation-x={-Math.PI / 2} />
 }
 
-// NORMAL TRANSPARENT PLANE TO ACT AS THE GROUND
-
+// NORMAL TRANSPARENT PLANE TO ACT AS THE GROUND if we don't want water
 // export default function Floor() {
 
 
