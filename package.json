@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@splinetool/loader": "^0.9.473",
+    "@splinetool/r3f-spline": "^1.0.2",
     "three-stdlib": "^2.25.0",
     "vercel": "^30.2.2"
   }
