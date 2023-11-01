@@ -119,7 +119,6 @@ export function Butterstick(props) {
         material={topMaterial}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
-        onClick={topSheet}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         material-envMapIntensity={0.4}
