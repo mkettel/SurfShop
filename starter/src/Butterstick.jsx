@@ -8,35 +8,36 @@ export function Butterstick(props) {
   const { nodes, materials } = useGLTF("../model/butter-stick.glb");
 
   // Leva Live Editor
-  // const { sidesColor, topColor, bottomsColor, stripeColor, finColor } = useControls({
-  //   sidesColor: {
-  //     value: "#E965A1",
-  //     label: "Side Color",
-  //   },
-  //   topColor: {
-  //     value: "#c780b7",
-  //     label: "Base Color",
-  //   },
-  //   bottomsColor: {
-  //     value: '#c780b7',
-  //     label: "Bottom Base Color",
-  //   },
-  //   stripeColor: {
-  //     value: '#000000',
-  //     label: "Stripe Color"
-  //   },
-  //   finColor: {
-  //     value: '#000000',
-  //     label: "Fin Color"
-  //   }
-  // });
-  const colors = ['#E965A1', '#c780b7', '#000000'];
+  const { sidesColor, topColor, bottomsColor, stripeColor, finColor } = useControls({
+    sidesColor: {
+      value: "#E965A1",
+      label: "Side Color",
+    },
+    topColor: {
+      value: "#c780b7",
+      label: "Base Color",
+    },
+    bottomsColor: {
+      value: '#c780b7',
+      label: "Bottom Base Color",
+    },
+    stripeColor: {
+      value: '#000000',
+      label: "Stripe Color"
+    },
+    finColor: {
+      value: '#000000',
+      label: "Fin Color"
+    }
+  });
+  // defining colors for the color picker
+ /*  const colors = ['#E965A1', '#c780b7', '#000000'];
 
   const [topColor, setTopColor] = useState('#c780b7');
   const [bottomsColor, setBottomsColor] = useState('#c780b7');
   const [sidesColor, setSidesColor] = useState('#E965A1');
   const [stripeColor, setStripeColor] = useState('#000000');
-  const [finColor, setFinColor] = useState('#000000');
+  const [finColor, setFinColor] = useState('#000000'); */
 
   // cloning material to make a new one
   const topMaterial = materials.rough.clone();
@@ -96,7 +97,6 @@ export function Butterstick(props) {
 
   return (
     <>
-    <ColorPicker colors={colors}  />
     <CameraControls ref={controlsRef} minPolarAngle={.3} maxPolarAngle={Math.PI / 2.3} minAzimuthAngle={-.7} maxAzimuthAngle={1} minDistance={3} maxDistance={11}  />
     <group
     {...props}

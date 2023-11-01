@@ -66,15 +66,15 @@ function FlipButton(props) {
   if (props.topSelected) {
     return <>
       <Html>
-        <button className="flip-button" onClick={props.flipBoard}>flip</button>
-        <p className="inst" style={{opacity: 0, transform: 'translateY(400px)'}}>tap board to stand</p>
+        <button className="flip-button" style={{transform: 'translateY(-20px)'}} onClick={props.flipBoard}>flip</button>
+        <p className="inst" onClick={props.topSheet} style={{opacity: 1, transform: 'translateY(-200px)'}}>lay board down</p>
       </Html>
     </>
   } else {
     return <>
       <Html>
         <button className="flip-button" style={{opacity: 0, transform: 'translateY(-400px)'}}>flip</button>
-        <p className="inst" onClick={props.topSheet} >tap board to stand</p>
+        <p className="inst" onClick={props.topSheet} >stand board up</p>
       </Html>
     </>
   }
