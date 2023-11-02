@@ -8,43 +8,89 @@ export function Butterstick(props) {
   const { nodes, materials } = useGLTF("../model/butter-stick.glb");
 
   // Leva Live Editor
-  const { sidesColor, topColor, bottomsColor, stripeColor, finColor } = useControls({
-    sidesColor: {
-      value: "#E965A1",
-      label: "Side Color",
-    },
-    topColor: {
-      value: "#c780b7",
-      label: "Base Color",
-    },
-    bottomsColor: {
-      value: '#c780b7',
-      label: "Bottom Base Color",
-    },
-    stripeColor: {
-      value: '#000000',
-      label: "Stripe Color"
-    },
-    finColor: {
-      value: '#000000',
-      label: "Fin Color"
-    }
+  // const { sidesColor, topColor, bottomsColor, stripeColor, finColor } = useControls({
+  //   sidesColor: {
+  //     value: "#E965A1",
+  //     label: "Side Color",
+  //   },
+  //   topColor: {
+  //     value: "#c780b7",
+  //     label: "Base Color",
+  //   },
+  //   bottomsColor: {
+  //     value: '#c780b7',
+  //     label: "Bottom Base Color",
+  //   },
+  //   stripeColor: {
+  //     value: '#000000',
+  //     label: "Stripe Color"
+  //   },
+  //   finColor: {
+  //     value: '#000000',
+  //     label: "Fin Color"
+  //   }
+  // });
+
+  // ---------------------------------------------------------------
+  // CUSTOM COLOR SELECTION
+  // ---------------------------------------------------------------
+  // selected mesh state
+  const [selectMesh, setSelectMesh] = useState(null);
+  const [meshName, setMeshName] = useState(null);
+  // default colors
+  const [colors, setColors] = useState({
+    sidesColor: "#E965A1",
+    topColor: "#c780b7",
+    bottomsColor: "#c780b7",
+    stripeColor: "#000000",
+    finColor: "#000000"
   });
-  // defining colors for the color picker
- /*  const colors = ['#E965A1', '#c780b7', '#000000'];
 
-  const [topColor, setTopColor] = useState('#c780b7');
-  const [bottomsColor, setBottomsColor] = useState('#c780b7');
-  const [sidesColor, setSidesColor] = useState('#E965A1');
-  const [stripeColor, setStripeColor] = useState('#000000');
-  const [finColor, setFinColor] = useState('#000000'); */
+  const availableColors = [
+    { id: 'color1', value: "#E965A1", label: "Pink"},
+    { id: 'color2', value: "#c780b7", label: "Purple"},
+    { id: 'color3', value: "#000000", label: "Black"},
+    { id: 'color4', value: "#ffffff", label: "White"},
+    { id: 'color5', value: "#ff0000", label: "Red"},
+  ]
 
-  // cloning material to make a new one
+  // function to get the details of the clicked mesh
+  const getMesh = (event) => {
+    const { object } = event; // get the mesh object from the event
+    if (object) {
+      setSelectMesh(object);
+      setMeshName(object.name);
+      console.log(object.material.color, meshName);
+    }
+  };
+
+  const colorChange = (color) => {
+    if (selectMesh) {
+      selectMesh.material.color.set(color);
+      console.log(color);
+      setColors({
+        ...colors,
+        [meshName]: color
+      })
+    }
+  }
+
+  // ---------------------------------------------------------------
+
+  // cloning material to make a new one for top and bottom
   const topMaterial = materials.rough.clone();
-  topMaterial.color.set(topColor);
+  topMaterial.color.set(colors.topColor);
 
   const bottomMaterial = materials.rough.clone();
-  bottomMaterial.color.set(bottomsColor);
+  bottomMaterial.color.set(colors.bottomsColor);
+
+  useEffect(() => {
+    // Update materials directly
+    materials.glossy.color.set(colors.sides);
+    topMaterial.color.set(colors.top);
+    bottomMaterial.color.set(colors.bottoms);
+    materials.fin.color.set(colors.fin);
+  }, [colors, materials]);
 
   // Refs
   const butterstick = useRef(); // access to the surfboard
@@ -97,62 +143,80 @@ export function Butterstick(props) {
 
   return (
     <>
+    {availableColors.map((color, index) => (
+      <ColorPicker key={color.id} index={index} color={color.value} meshName={meshName} selectMesh={selectMesh} onSelect={() => colorChange()} />
+    ))}
+
     <CameraControls ref={controlsRef} minPolarAngle={.3} maxPolarAngle={Math.PI / 2.3} minAzimuthAngle={-.7} maxAzimuthAngle={1} minDistance={3} maxDistance={11}  />
     <group
-    {...props}
-    dispose={null}
-    ref={butterstick}
-    >
+      {...props}
+      dispose={null}
+      ref={butterstick}
+      >
       <mesh
         castShadow
         geometry={nodes.surfboard.geometry}
-        material-color={sidesColor}
+        material-color={colors.sidesColor}
         material={materials.glossy}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
         material-envMapIntensity={0.5}
+        name="sides"
+        onClick={getMesh}
         />
       <mesh
         castShadow
         geometry={nodes.surftop.geometry}
-        material-color={topColor}
+        material-color={colors.topColor}
         material={topMaterial}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         material-envMapIntensity={0.4}
+        name="top"
+        onClick={getMesh}
         />
       <mesh
         castShadow
         geometry={nodes.surfbottom.geometry}
         material={bottomMaterial}
-        material-color={bottomsColor}
+        material-color={colors.bottomsColor}
         position={[0.039, 1.216, -0.292]}
         scale={[1, 1, 1.123]}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
         material-envMapIntensity={0.4}
+        name="bottoms"
+        onClick={getMesh}
         />
       <mesh
         castShadow
         // receiveShadow
         geometry={nodes["fin-1"].geometry}
         material={materials.fin}
-        material-color={finColor}
+        material-color={colors.finColor}
         position={[0.653, 0.077, -2.872]}
         rotation={[-3.084, 0, -Math.PI]}
         scale={[0.142, 0.366, 0.441]}
         material-envMapIntensity={0.4}
-
+        name="fin"
+        onClick={getMesh}
         />
       <mesh
         castShadow
         // receiveShadow
         geometry={nodes["fin-2"].geometry}
         material={materials.fin}
+        material-color={colors.finColor}
         position={[-0.477, 0.077, -2.872]}
         rotation={[-3.084, 0, -Math.PI]}
         scale={[0.142, 0.366, 0.441]}
         material-envMapIntensity={0.4}
+        name="fin"
+        onClick={getMesh}
         />
       <mesh
         castShadow
@@ -320,18 +384,29 @@ export function Butterstick(props) {
 useGLTF.preload("/butter-stick.glb");
 
 
-// COLOR PICKER COMPONENT
-export default function ColorPicker({colors, setSelectedColor}) {
+function ColorPicker({ color, onSelect, index, meshName, selectMesh }) {
 
+  // get access to the mesh
+  const mesh = useRef();
 
-  return colors.map((color, index) => (
+  // sphere color state
+  const [sphereColor, setSphereColor] = useState(color);
+
+  const handleClick = () => {
+    setSphereColor(color);
+    selectMesh.material.color.set(color);
+    console.log(sphereColor);
+  };
+
+  return <>
     <mesh
-      key={color}
-      position={[index * 2 - 3, 0, 4]} // Spread them out on the x-axis for simplicity
-      onClick={() => setSelectedColor(color)}
+      useRef={mesh}
+      position={[(index * .7) * -.9, .5, 5]}
+      onClick={handleClick}
     >
-      <sphereGeometry args={[0.5, 32, 32]} />
-      <meshStandardMaterial color={color} />
+      <sphereGeometry args={[0.15, 32, 32]} />
+      <meshBasicMaterial color={color} />
     </mesh>
-  ));
+
+  </>
 }
