@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useGLTF, CameraControls } from "@react-three/drei";
+import { useGLTF, CameraControls, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from 'leva'
 import * as THREE from 'three'
@@ -377,6 +377,8 @@ export function Butterstick(props) {
         />
     </group>
     <props.FlipButton topSheet={topSheet} flipBoard={flipBoard} flipBoardState={flipBoardState} setFlipBoardState={setFlipBoardState} topSelected={topSelected} setTopSelected={setTopSelected} />
+
+    <DisplaySelection meshName={meshName} selectMesh={selectMesh} />
   </>
   );
 }
@@ -401,12 +403,21 @@ function ColorPicker({ color, onSelect, index, meshName, selectMesh }) {
   return <>
     <mesh
       useRef={mesh}
-      position={[(index * .7) * -.9, .5, 5]}
+      position={[(index * .7) * -.9, .5, 3]}
       onClick={handleClick}
     >
       <sphereGeometry args={[0.15, 32, 32]} />
       <meshBasicMaterial color={color} />
     </mesh>
+  </>
+}
 
+function DisplaySelection({ meshName, selectMesh}) {
+
+
+  return <>
+    <Html>
+      <p className="selectionDisplay">{meshName}</p>
+    </Html>
   </>
 }
