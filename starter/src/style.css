@@ -69,6 +69,15 @@ font-family: 'Melodrama', serif; */
   transition: .9s;
 }
 
+.selectionDisplay {
+  position: absolute;
+  top: -300px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+}
+
 .inst {
   position: absolute;
   bottom: 0px;

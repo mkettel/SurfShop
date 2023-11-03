@@ -55,7 +55,7 @@ export default function Experience()
         {/* <Floor /> */}
         <Suspense fallback={ <Placeholder /> }>
           <Ocean />
-          <Environment background files="../background/s_sunset_1.hdr" />
+          <Environment background files="../background/k_7.hdr" />
         </Suspense>
 
     </>
