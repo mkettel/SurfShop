@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, CameraControls, Html } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useControls } from 'leva'
 import * as THREE from 'three'
 
@@ -54,14 +54,34 @@ export function Butterstick(props) {
     { id: 'color5', value: "#ff0000", label: "Red"},
   ]
 
+  // access to the camera and scene
+  const { camera, scene } = useThree();
+
   // function to get the details of the clicked mesh
   const getMesh = (event) => {
-    const { object } = event; // get the mesh object from the event
-    if (object) {
-      setSelectMesh(object);
-      setMeshName(object.name);
-      console.log(object.material.color, meshName);
+    // Get the mouse position from the click event
+    const mouse = {
+      x: (event.clientX / window.innerWidth) * 2 - 1,
+      y: -(event.clientY / window.innerHeight) * 2 + 1,
+    };
+
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObjects(scene.children, true);
+    if (intersects.length > 0) {
+      const firstIntersectedObject = intersects[0].object;
+      setSelectMesh(firstIntersectedObject);
+      setMeshName(firstIntersectedObject.name);
+      console.log(firstIntersectedObject.material.color, meshName);
     }
+
+    // const { object } = event; // get the mesh object from the event
+    // if (object) {
+    //   setSelectMesh(object);
+    //   setMeshName(object.name);
+    //   console.log(object.material.color, meshName);
+    // }
   };
 
   const colorChange = (color) => {
