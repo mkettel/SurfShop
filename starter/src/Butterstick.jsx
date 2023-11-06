@@ -61,7 +61,7 @@ export function Butterstick(props) {
   const getMesh = (event) => {
     // Get the mouse position from the click event
     const mouse = {
-      x: (event.clientX / window.innerWidth) * 2 - 1,
+      x: (event.clientX / window.innerWidth) * 2 - 1, // x and y coordinates in the range of [-1, 1]
       y: -(event.clientY / window.innerHeight) * 2 + 1,
     };
 
@@ -75,13 +75,6 @@ export function Butterstick(props) {
       setMeshName(firstIntersectedObject.name);
       console.log(firstIntersectedObject.material.color, meshName);
     }
-
-    // const { object } = event; // get the mesh object from the event
-    // if (object) {
-    //   setSelectMesh(object);
-    //   setMeshName(object.name);
-    //   console.log(object.material.color, meshName);
-    // }
   };
 
   const colorChange = (color) => {
@@ -221,6 +214,8 @@ export function Butterstick(props) {
         position={[0.653, 0.077, -2.872]}
         rotation={[-3.084, 0, -Math.PI]}
         scale={[0.142, 0.366, 0.441]}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
         material-envMapIntensity={0.4}
         name="fin"
         onClick={getMesh}
@@ -234,6 +229,8 @@ export function Butterstick(props) {
         position={[-0.477, 0.077, -2.872]}
         rotation={[-3.084, 0, -Math.PI]}
         scale={[0.142, 0.366, 0.441]}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
         material-envMapIntensity={0.4}
         name="fin"
         onClick={getMesh}
@@ -416,6 +413,7 @@ function ColorPicker({ color, onSelect, index, meshName, selectMesh }) {
 
   const handleClick = () => {
     setSphereColor(color);
+    // onSelect(color);
     selectMesh.material.color.set(color);
     console.log(sphereColor);
   };
