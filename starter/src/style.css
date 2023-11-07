@@ -61,10 +61,8 @@ font-family: 'Melodrama', serif; */
   transition: all 0.9s ease-in-out;
   transform: translateX(0px);
   color: #1B263B;
-
 }
 .flip-button:hover {
-  /* transform: rotate3d(0, 1, 0, 180deg); */
   color: #007d64;
   transition: .9s;
 }
