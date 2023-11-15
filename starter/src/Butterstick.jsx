@@ -47,7 +47,7 @@ export function Butterstick(props) {
   });
 
   const availableColors = [
-    { id: 'color1', value: "#E965A1", label: "Pink"},
+    { id: 'color1', value: "#E965A1", label: "Maybe Pink"},
     { id: 'color2', value: "#c780b7", label: "Purple"},
     { id: 'color3', value: "#000000", label: "Black"},
     { id: 'color4', value: "#ffffff", label: "White"},
