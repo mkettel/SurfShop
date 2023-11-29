@@ -32,7 +32,7 @@ export default function Experience()
     }, []);
     // --------------------------------------------------------------------------
 
-    // Leva Surfboard Change
+    // Leva Surfboard Change ---------------------
     const { selectedBoard } = useControls({
       selectedBoard: {
         value: 'Butterstick',
@@ -54,7 +54,7 @@ export default function Experience()
 
         {/* <Floor /> */}
         <Suspense fallback={ <Placeholder /> }>
-          <Ocean />
+          {/* <Ocean /> */}
           <Environment background files="../background/k_7.hdr" />
         </Suspense>
 
