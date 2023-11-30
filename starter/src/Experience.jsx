@@ -32,7 +32,7 @@ export default function Experience()
     }, []);
     // --------------------------------------------------------------------------
 
-    // Leva Surfboard Change ---------------------
+    // Leva Surfboard Change ---------------------------------------------------
     const { selectedBoard } = useControls({
       selectedBoard: {
         value: 'Butterstick',
