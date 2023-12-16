@@ -30,7 +30,7 @@ export default function Experience()
       window.removeEventListener('resize', handleResize);
     };
     }, []);
-    // -----------------------------------------
+    // --------------------------------------
 
     // Leva Surfboard Change --------
     const { selectedBoard } = useControls({
