@@ -25,7 +25,7 @@ export default function Surfboard(props) {
     },
   })
 
-  // camera acess
+  // camera acess------------
   const { camera } = useThree()
   camera.focus = 100; // set the focus distance
 
