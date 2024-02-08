@@ -88,7 +88,7 @@ export function Butterstick(props) {
     }
   }
 
-  // ------------------------------------------------
+  // ------------------------------
 
   // cloning material to make a new one for top and bottom
   const topMaterial = materials.rough.clone();
